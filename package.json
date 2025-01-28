@@ -5,7 +5,7 @@
   "description": "A toolkit for various utilities and helpers.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
+    "test": "echo \"Error: no test specified\" && standard --fix",
     "prepare": "husky"
   },
   "keywords": [
