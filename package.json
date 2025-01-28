@@ -1,6 +1,7 @@
 {
   "name": "@crossops/toolkit",
   "version": "1.0.0",
+  "type": "module",
   "description": "A toolkit for various utilities and helpers.",
   "main": "index.js",
   "scripts": {
