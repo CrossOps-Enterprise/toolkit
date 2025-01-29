@@ -1,4 +1,4 @@
-import { POSTGRES_ERRORS } from './constants'
+import { POSTGRES_ERRORS } from './constants.js'
 import { STATUS_CODES } from 'node:http'
 
 export function handleExpressError (err, req, res, next) {
