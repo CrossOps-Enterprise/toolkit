@@ -1,5 +1,6 @@
 import { POSTGRES_ERRORS } from './constants.js'
 import { STATUS_CODES } from 'node:http'
+import { auto } from './lib.js'
 
 export function handleExpressError (err, req, res, next) {
   /* This is to ensure we dont send the headers again because it fails the HTTP request in express server */
@@ -13,4 +14,13 @@ export function handleExpressError (err, req, res, next) {
   const errorMessage = err.message || httpError || postgresError || 'Internal Error'
 
   res.status(httpError ? statusCode : 500).json({ error: err, message: errorMessage })
+}
+
+export function autoCatch (handlers) {
+  if (typeof handlers === 'function') return auto(handlers)
+
+  return Object.keys(handlers).reduce((autoHandlers, key) => {
+    autoHandlers[key] = auto(handlers[key])
+    return autoHandlers
+  }, {})
 }
